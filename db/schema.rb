@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(:version => 20130527185541) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "tags_user_stories", :force => true do |t|
+    t.integer  "tag_id",        :null => false
+    t.integer  "user_story_id", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "user_stories", :force => true do |t|
     t.string   "title",          :null => false
     t.string   "story",          :null => false
@@ -63,13 +70,6 @@ ActiveRecord::Schema.define(:version => 20130527185541) do
     t.integer  "developer_id",   :null => false
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-  end
-
-  create_table "user_stories_tags", :force => true do |t|
-    t.integer  "tag_id",        :null => false
-    t.integer  "user_story_id", :null => false
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
   end
 
 end
