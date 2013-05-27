@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527181057) do
+ActiveRecord::Schema.define(:version => 20130527185541) do
 
   create_table "clients", :force => true do |t|
     t.string   "name",            :null => false
@@ -21,6 +21,55 @@ ActiveRecord::Schema.define(:version => 20130527181057) do
     t.string   "phone"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "developers", :force => true do |t|
+    t.string   "name",        :null => false
+    t.integer  "hourly_rate", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "title",          :null => false
+    t.integer  "total_cost"
+    t.datetime "due_date"
+    t.integer  "estimated_cost"
+    t.integer  "client_id",      :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "story_files", :force => true do |t|
+    t.string   "filename",      :null => false
+    t.integer  "user_story_id", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "tag",        :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_stories", :force => true do |t|
+    t.string   "title",          :null => false
+    t.string   "story",          :null => false
+    t.datetime "due_date",       :null => false
+    t.integer  "estimated_cost", :null => false
+    t.integer  "actual_cost"
+    t.integer  "project_id",     :null => false
+    t.integer  "developer_id",   :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "user_stories_tags", :force => true do |t|
+    t.integer  "tag_id",        :null => false
+    t.integer  "user_story_id", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
 end
